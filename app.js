@@ -366,7 +366,13 @@
   var LEADS_PW = 'master';         // senha da lista (Leandro pode trocar)
   // nc = coluna do nome · pc = coluna do telefone · q = perguntas (indice da coluna na aba)
   // ex.: { key: 'cadastro', tab: 'Cadastro', gid: 0, label: 'Cadastro', nc: 16, pc: 17, q: [{ i: 12, ico: '✨', lab: 'Pergunta 1' }] }
-  var LEADS_FORMS = [];
+  // pc2 = coluna alternativa do telefone (o Meta às vezes grava e-mail/telefone em ordem trocada)
+  var LEADS_FORMS = [
+    { key: 'cadastro', tab: 'Cadastro', gid: 0, label: 'Cadastro', nc: 14, pc: 16, pc2: 15, q: [
+      { i: 12, ico: '✨', lab: 'Já fez procedimento?' },
+      { i: 13, ico: '📅', lab: 'Quando pretende fazer' }
+    ] }
+  ];
   var LEADS = { loaded: 0, error: false, rows: {} };   // rows[formKey] = [...]
   var leadsFormTab = LEADS_FORMS.length ? LEADS_FORMS[0].key : '';               // sub-aba selecionada na lista
   var leadsUnlocked = false;
@@ -605,7 +611,7 @@
       if (!id || id === 'id' || created === 'created_time' || created.length < 10) continue;
       var day = created.slice(0, 10); if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) continue;
       if (seen[id]) continue; seen[id] = 1;                       // dedupe por id
-      out.push({ id: id, day: day, name: (v[form.nc] || '').trim(), phone: cleanPhone(v[form.pc]),
+      out.push({ id: id, day: day, name: (v[form.nc] || '').trim(), phone: cleanPhone(form.pc2 != null && /@/.test(v[form.pc] || '') ? v[form.pc2] : v[form.pc]),
                  ans: form.q.map(function (q) { return (v[q.i] || '').trim(); }) });
     }
     return out;
