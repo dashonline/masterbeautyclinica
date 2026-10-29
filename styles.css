@@ -43,6 +43,9 @@ body{
 header.top{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:18px}
 h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;font-weight:600;letter-spacing:.01em;line-height:1.1;margin:0 0 4px;color:var(--title-ink)}
 .sub{color:var(--ink-3);font-size:13px;margin:0}
+.brandrow{display:flex;align-items:center;gap:14px}
+.logo{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none;border:2px solid var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
+@media (max-width:520px){.logo{width:44px;height:44px}}
 .sub b{color:var(--ink-2)}
 .top-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .badge{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;
