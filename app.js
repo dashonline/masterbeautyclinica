@@ -777,13 +777,13 @@
 
     if (!CLIENT) {
       renderFunnel(cur);
-      comboChart($('chA'), rows, { bars: [{ key: 'spend', color: 'var(--critical)', name: 'Investimento c/ imposto' }], line: { key: 'msg', color: 'var(--good)', name: 'Mensagens' }, leftFmt: M.money0, rightFmt: M.int, lineFmt: M.int });
-      var barsB = [{ key: 'msg', color: 'var(--good)', name: 'Mensagens' }];
+      comboChart($('chA'), rows, { bars: [{ key: 'spend', color: 'var(--series-2)', name: 'Investimento c/ imposto' }], line: { key: 'msg', color: 'var(--series-1)', name: 'Mensagens' }, leftFmt: M.money0, rightFmt: M.int, lineFmt: M.int });
+      var barsB = [{ key: 'msg', color: 'var(--series-1)', name: 'Mensagens' }];
       if (SHOW_LEADS) barsB.push({ key: 'lead', color: 'var(--series-2)', name: 'Leads' });
       comboChart($('chB'), rows, { bars: barsB, line: { key: 'cpmsg', color: 'var(--ink-1)', name: 'Custo/msg' }, leftFmt: M.int, rightFmt: M.money0, lineFmt: M.money });
       var lgSq = function (c) { return '<i style="background:' + c + '"></i>'; }, lgLn = function (c) { return '<i style="width:15px;height:0;border-top:2px solid ' + c + ';border-radius:0"></i>'; };
-      $('legA').innerHTML = '<span>' + lgSq('var(--critical)') + '<span style="color:var(--ink-2)">Investimento c/ imposto</span></span><span>' + lgLn('var(--good)') + '<span style="color:var(--ink-2)">Mensagens (eixo dir.)</span></span>';
-      $('legB').innerHTML = '<span>' + lgSq('var(--good)') + '<span style="color:var(--ink-2)">Mensagens</span></span>' + (SHOW_LEADS ? '<span>' + lgSq('var(--series-2)') + '<span style="color:var(--ink-2)">Leads</span></span>' : '') + '<span>' + lgLn('var(--ink-1)') + '<span style="color:var(--ink-2)">Custo/msg (eixo dir.)</span></span>';
+      $('legA').innerHTML = '<span>' + lgSq('var(--series-2)') + '<span style="color:var(--ink-2)">Investimento c/ imposto</span></span><span>' + lgLn('var(--series-1)') + '<span style="color:var(--ink-2)">Mensagens (eixo dir.)</span></span>';
+      $('legB').innerHTML = '<span>' + lgSq('var(--series-1)') + '<span style="color:var(--ink-2)">Mensagens</span></span>' + (SHOW_LEADS ? '<span>' + lgSq('var(--series-2)') + '<span style="color:var(--ink-2)">Leads</span></span>' : '') + '<span>' + lgLn('var(--ink-1)') + '<span style="color:var(--ink-2)">Custo/msg (eixo dir.)</span></span>';
 
       var METRICS = [
         { k: 'spend', label: 'Investimento', fmt: M.money0 }, { k: 'msg', label: 'Mensagens', fmt: M.int },
@@ -823,14 +823,14 @@
   }
   function renderFunnel(c) {
     var stages = [
-      { n: 'Investimento', big: M.money(c.spend), bg: '#8fe01e', ink: '#0c1400', cl: 'Gasto bruto', cv: M.money(c.spend / TAX), sub: '+ imposto ×' + taxStr(TAX) + ' = <b>' + M.money(c.spend) + '</b>' },
-      { n: 'Impressões', big: M.int(c.impr), bg: '#7ecb1c', ink: '#0c1400', cl: 'CPM', cv: M.money(c.cpm), sub: 'CTR (link) <b>' + M.pct1(c.ctr) + '</b>' },
-      { n: 'Cliques (link)', big: M.int(c.clk), bg: '#5aa60f', ink: '#fff', cl: 'CPC (link)', cv: M.money(c.cpc), sub: 'Clique → Conversa <b>' + M.pct1(c.msgRate) + '</b>' },
-      { n: 'Mensagens', big: M.int(c.msg), bg: '#356606', ink: '#fff', cl: 'Custo / Mensagem', cv: M.money(c.cpmsg), sub: SHOW_LEADS ? '+ <b>' + M.int(c.lead) + '</b> leads de formulário (custo/lead ' + M.money(c.cpl) + ')' : 'resultado principal' }
+      { n: 'Investimento', big: M.money(c.spend), bg: '#f1e2bd', ink: '#1a1406', cl: 'Gasto bruto', cv: M.money(c.spend / TAX), sub: '+ imposto ×' + taxStr(TAX) + ' = <b>' + M.money(c.spend) + '</b>' },
+      { n: 'Impressões', big: M.int(c.impr), bg: '#e2c88e', ink: '#1a1406', cl: 'CPM', cv: M.money(c.cpm), sub: 'CTR (link) <b>' + M.pct1(c.ctr) + '</b>' },
+      { n: 'Cliques (link)', big: M.int(c.clk), bg: '#c9a45c', ink: '#1a1406', cl: 'CPC (link)', cv: M.money(c.cpc), sub: 'Clique → Conversa <b>' + M.pct1(c.msgRate) + '</b>' },
+      { n: 'Mensagens', big: M.int(c.msg), bg: '#93733a', ink: '#fff', cl: 'Custo / Mensagem', cv: M.money(c.cpmsg), sub: SHOW_LEADS ? '+ <b>' + M.int(c.lead) + '</b> leads de formulário (custo/lead ' + M.money(c.cpl) + ')' : 'resultado principal' }
     ];
     if (agOn()) {
       var ag = agInPeriod(STATE.from, STATE.to), contatos = c.msg + c.lead;
-      stages.push({ n: 'Agendamentos', big: M.int(ag.n), bg: '#1f3d03', ink: '#fff', cl: 'Custo / Agendamento', cv: M.money(div(c.spend, ag.n)),
+      stages.push({ n: 'Agendamentos', big: M.int(ag.n), bg: '#1f3a5f', ink: '#fff', cl: 'Custo / Agendamento', cv: M.money(div(c.spend, ag.n)),
         sub: 'Contato → Agendamento <b>' + M.pct1(div(ag.n, contatos)) + '</b> · ' + M.money0(ag.v) + ' em consultas' });
     }
     $('funnel').innerHTML = stages.map(function (s) {

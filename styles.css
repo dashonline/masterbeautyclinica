@@ -1,28 +1,32 @@
 /* ============================================================ tokens
    Sistema de cores theme-aware (claro/escuro) — portado da dash de referência
    da agência e adaptado. O tema é decidido pelo data-theme no <html>. */
+/* Paleta Clínica Master Beauty (ID do Instagram @masterbeauty.clinica):
+   marinho profundo + dourado champanhe + creme. Escuro = padrão (igual aos posts). */
 :root{
   color-scheme: light;
-  --surface-1:#fcfcfb; --plane:#f2f2ef; --card:#ffffff;
-  --ink-1:#0b0b0b; --ink-2:#52514e; --ink-3:#898781;
-  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,.10);
-  --brand:#4e9a00; --brand-ink:#ffffff; --brand-soft:rgba(78,154,0,.12);
-  --series-1:#4e9a00; --series-2:#1f7fb8; --series-3:#1f7fb8;
+  --surface-1:#fffdf9; --plane:#f4efe6; --card:#fffdf9;
+  --ink-1:#0f1a2b; --ink-2:#4a5468; --ink-3:#8a8778;
+  --grid:#e6dfd1; --axis:#cfc5b1; --ring:rgba(15,26,43,.11);
+  --brand:#a8833f; --brand-ink:#ffffff; --brand-soft:rgba(168,131,63,.13);
+  --series-1:#a8833f; --series-2:#1f3a5f; --series-3:#1f3a5f;
   --good:#0ca30c; --good-text:#006300; --warning:#e6920a; --warn-text:#8a5600; --critical:#d03b3b;
-  --f1:#8fca2e; --f2:#6fae16; --f3:#55930c; --f4:#3f6f08; --f5:#2c5106;
-  --scale-ink:#4e9a00;
-  --shadow:0 1px 2px rgba(11,11,11,.05), 0 8px 24px -12px rgba(11,11,11,.18);
+  --f1:#e3cc98; --f2:#cfb072; --f3:#b8954f; --f4:#93733a; --f5:#6b5228;
+  --scale-ink:#a8833f;
+  --title-ink:#8a6a30;
+  --shadow:0 1px 2px rgba(15,26,43,.05), 0 8px 24px -12px rgba(15,26,43,.18);
 }
 :root[data-theme="dark"]{
   color-scheme: dark;
-  --surface-1:#16171a; --plane:#0b0c0a; --card:#16171a;
-  --ink-1:#ffffff; --ink-2:#c3c2b7; --ink-3:#898781;
-  --grid:#2a2c26; --axis:#383a33; --ring:rgba(255,255,255,.10);
-  --brand:#8fe01e; --brand-ink:#0c1400; --brand-soft:rgba(143,224,30,.14);
-  --series-1:#8fe01e; --series-2:#41b2e2; --series-3:#41b2e2;
-  --good:#0ca30c; --good-text:#8fe01e; --warning:#fab219; --warn-text:#fab219; --critical:#e2555a;
-  --f1:#e2f7ad; --f2:#bfee66; --f3:#8fe01e; --f4:#5aa614; --f5:#3c7810;
-  --scale-ink:#8fe01e;
+  --surface-1:#121d30; --plane:#0a1220; --card:#121d30;
+  --ink-1:#f5efe4; --ink-2:#c9c2b2; --ink-3:#8b93a3;
+  --grid:#1f2c42; --axis:#2c3a52; --ring:rgba(214,186,128,.14);
+  --brand:#d4b06a; --brand-ink:#1a1406; --brand-soft:rgba(212,176,106,.14);
+  --series-1:#d4b06a; --series-2:#8fb3d9; --series-3:#8fb3d9;
+  --good:#0ca30c; --good-text:#6fd36f; --warning:#fab219; --warn-text:#fab219; --critical:#e2555a;
+  --f1:#f1e2bd; --f2:#e2c88e; --f3:#d4b06a; --f4:#a8833f; --f5:#7d5f2a;
+  --scale-ink:#d4b06a;
+  --title-ink:#e2c88e;
   --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 26px -12px rgba(0,0,0,.75);
 }
 
@@ -37,7 +41,7 @@ body{
 
 /* ---------------------------------------------------------------- header */
 header.top{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:18px}
-h1{font-size:20px;font-weight:700;letter-spacing:-.01em;margin:0 0 4px;color:var(--ink-1)}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;font-weight:600;letter-spacing:.01em;line-height:1.1;margin:0 0 4px;color:var(--title-ink)}
 .sub{color:var(--ink-3);font-size:13px;margin:0}
 .sub b{color:var(--ink-2)}
 .top-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
